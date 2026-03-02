@@ -1,6 +1,10 @@
 class RoutinesController < ApplicationController
+  before_action set_routines, only: %i[show]
   def index
     @routines = Routine.all
+  end
+
+  def show
   end
 
   def new
@@ -19,6 +23,10 @@ class RoutinesController < ApplicationController
   end
 
   private
+
+  def set_routines
+    @routine = Routine.find(params[:id])
+  end
 
   def routine_params
     params.require(:routine).permit(:name)
