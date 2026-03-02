@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Smart Trainer" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
+
+    <div class="app-layout">
+      <%= render "shared/sidebar" %>
+
+      <div class="app-content">
+        <%= render "shared/flashes" %>
+
+        <main id="main-content">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
