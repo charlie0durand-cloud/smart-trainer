@@ -1,0 +1,106 @@
+/* =============================================
+   LAYOUT GLOBAL
+   ============================================= */
+
+.app-layout {
+  display: flex;
+  min-height: 100svh;
+}
+
+.app-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition);
+  min-width: 0; /* Ã©vite overflow sur flex */
+}
+
+/* Quand sidebar collapsed */
+.sidebar[data-state="collapsed"] ~ .app-content,
+.app-layout:has(.sidebar[data-state="collapsed"]) .app-content {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+/* =============================================
+   SIDEBAR - smart-trainer
+   app/assets/stylesheets/sidebar.css
+   ============================================= */
+
+:root {
+  --sidebar-width: 16rem;
+  --sidebar-width-collapsed: 3rem;
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e5e7eb;
+  --sidebar-text: #111827;
+  --sidebar-text-muted: #6b7280;
+  --sidebar-accent: #f9fafb;
+  --sidebar-accent-hover: #f3f4f6;
+  --sidebar-active: #e5e7eb;
+  --btn-new-bg: transparent;
+  --btn-new-hover: #f3f4f6;
+  --transition: 200ms ease;
+  --navbar-height: 56px;
+}
+
+/* ---- Sidebar container ---- */
+.sidebar {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  height: calc(100svh - var(--navbar-height));
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  transition: width var(--transition);
+  z-index: 40;
+  overflow: hidden;
+}
+
+.sidebar[data-state="collapsed"] {
+  width: var(--sidebar-width-collapsed);
+}
+
+/* ---- Inner wrapper ---- */
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: var(--sidebar-width);
+  overflow: hidden;
+}
+
+/* ---- Footer / bouton new routine ---- */
+.sidebar-footer {
+  padding: 0.75rem;
+}
+
+.btn-new-routine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  color: #111827;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background var(--transition), transform 80ms ease;
+}
+
+.btn-new-routine:hover {
+  background: var(--btn-new-hover);
+  color: #111827;
+}
+
+.btn-new-routine:active {
+  transform: scale(0.97);
+}
+
+.sidebar[data-state="collapsed"] .btn-new-routine span {
+  display: none;
+}
