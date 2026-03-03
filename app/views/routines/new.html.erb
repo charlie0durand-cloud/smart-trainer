@@ -1,0 +1,12 @@
+<div class="new-routine-page">
+  <h1>Nouvelle routine</h1>
+
+  <%= form_with model: @routine do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Nom de la routine" %>
+      <%= f.text_field :name, placeholder: "Ex: Full Body Strength" %>
+    </div>
+
+    <%= f.submit "Créer" %>
+  <% end %>
+</div>
