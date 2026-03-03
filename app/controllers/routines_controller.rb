@@ -5,15 +5,16 @@ class RoutinesController < ApplicationController
 
   def index
     @routines = Routine.all
+    @routines = current_user.routines
   end
 
   def show
+    @routine = Routine.find(params[:id])
     @routines = current_user.routines
   end
 
   def new
     @routine = Routine.new
-    @routines = current_user.routines
   end
 
   def create
@@ -22,7 +23,6 @@ class RoutinesController < ApplicationController
   if @routine.save
     redirect_to root_path
   else
-    @routines = current_user.routines
     render :new, status: :unprocessable_content
   end
   end
