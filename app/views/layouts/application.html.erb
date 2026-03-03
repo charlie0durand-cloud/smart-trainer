@@ -24,14 +24,15 @@
   </head>
 
     <body>
-  <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
-  <header>
-    <%= render "shared/navbar" %> <!-- 👈 Add this for navbar -->
-  </header>
-    <%= render "shared/flashes" %>
+      <header>
+        <%= render "shared/navbar" %>
+      </header>
+        <%= render "shared/flashes" %>
 
-  <main id="main-content">
-    <%= yield %>
-  </main>
-</body>
+    <div class="page-wrapper">
+      <%= yield :sidebar %>
+      <main id="main-content" class="main-content">
+        <%= yield %>
+      </main>
+  </div>
 </html>
