@@ -1,2 +1,17 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+
+    <div class="hero-flex-wrapper">
+      <div class="hero-text-content">
+        <h1>Stop following a program,<br> create your own in one click.<br></h1>
+        <%= link_to "REGISTER NOW", new_user_registration_path, class: "btn-custom-primary" %>
+      </div>
+
+      <div class="hero-logo-container">
+        <%= image_tag("logo bien.png", class: "hero-logo-large") %>
+      </div>
+    </div>
+
+<%# <div class="sharktrainer-container">
+    <%= image_tag ("SharkTrainer (5).png") %>
+</div> 
+</div>
