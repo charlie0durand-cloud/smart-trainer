@@ -1,22 +1,19 @@
-/* Ce code ne s'appliquera QUE sur la home page */
-.background-blue {
+body {
   margin: 0;
   padding: 0;
+  /* Dégradé vertical : du bleu-vert au gris-bleu */
   background: linear-gradient(
     to bottom,
     #66A5AA 0%,
     #48515A 100%
   );
+  /* Fixe le fond pour éviter qu'il ne se répète ou bouge au scroll */
   background-attachment: fixed;
+  /* Force le fond à couvrir toute la hauteur de l'écran */
   min-height: 100vh;
+  /* Définit la police et la couleur par défaut pour tout le site */
   color: white;
   font-family: 'Inter', sans-serif;
-}
-
-/* On s'assure que les autres pages gardent un fond neutre */
-body {
-  background: #ffffff;
-  color: #333;
 }
 
 .hero {
@@ -61,6 +58,16 @@ body {
 .hero-logo-large {
   width: 800px;
   height: auto;           /* Garde les proportions */
+  /* L'animation dure 4 secondes pour un effet de flottement naturel */
+  animation: sharkFloat 4s ease-in-out infinite;
+  /* Optionnel : une ombre portée qui ne bouge pas pour accentuer le relief */
+  filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.3));
+  animation-name: sharkSwimAndTurn;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out; /* Mouvement naturel */
+  // animation-iteration-count: infinite; /* Répétition sans fin */
+  animation: sharkSwimTurnAndStop 4s ease-out forwards;
+  transition: transform 0.5s ease-in-out;
 }
 
 .btn-custom-primary {
@@ -91,4 +98,51 @@ body {
   display: flex;
 }
 
+@keyframes sharkSwimTurnAndStop {
+  0% {
+    /* Départ à droite */
+    transform: translateX(0) rotateY(0deg);
+  }
+  80% {
+    /* Arrivée à gauche (le déplacement prend 80% du temps) */
+    transform: translateX(-550px) rotateY(0deg);
+  }
+  100% {
+    /* Se retourne sur place à la fin */
+    transform: translateX(-550px) rotateY(180deg);
+  }
+}
 
+@keyframes fadeOutText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    /* Le texte commence à disparaître quand le requin arrive au milieu */
+    opacity: 1;
+  }
+  80% {
+    /* Le texte est totalement invisible quand le requin s'arrête à gauche */
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-text-content h1 {
+  animation: fadeOutText 4s ease-out forwards;
+}
+
+@keyframes revealImage {
+  0%, 80% {
+    /* Reste invisible pendant que le requin nage (3.2s) */
+    opacity: 0;
+    transform: translateX(20px); /* Légère translation pour l'effet */
+  }
+  100% {
+    /* Apparaît complètement quand le requin se retourne (4s) */
+    opacity: 1;
+    transform: translateX(0);    /* Revient à sa place */
+  }
+}
