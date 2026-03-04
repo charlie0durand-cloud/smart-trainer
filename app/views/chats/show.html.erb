@@ -1,0 +1,47 @@
+<div class="container">
+  <div id="messages">
+    <% @chat.messages.each do |message| %>
+      <% if message.role == "user" %>
+        <div class="d-flex justify-content-end mb-2">
+          <div class="bg-white px-3 pb-0 pt-3 rounded-2">
+            <%= raw(render_markdown(message.content)) %>
+          </div>
+        </div>
+      <% elsif message.role == "assistant" %>
+        <div class="d-flex justify-content-start mb-5 bg-light rounded-">
+          <div class="px-3 pb-0 pt-3 d-flex">
+            <% string = message.content %>
+            <% array = JSON.parse(string) %>
+            <%= puts array %>
+              <div class="d-flex">
+                <div>
+                  <%# TO DO : ADD BUTTON + TO ADD TO THE ROUTINE %>
+                </div>
+                <div>
+                  <iframe
+                    src="<%= array[3].gsub("watch?v=", "embed/") %>"
+                    frameborder="0"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div>
+                  <h5>Name: <%= array[0] %></h5>
+                  <p>Objective : <%= array[1] %></p>
+                  <p>Repetitions : <%= array[2] %></p>
+                </div>
+
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+  <div id="new_message_container">
+    <%= simple_form_for [@chat, @message] do |f| %>
+        <%= f.input :content, label: "Ask a question", required: true, placeholder: "How should I get started with the challenge?", class:"dialog-bar" %>
+        <%= f.button :submit, 'Ask LLM', class: 'btn-custom-primary m-2' %>
+    <% end %>
+  </div>
+</div>
+</div>
