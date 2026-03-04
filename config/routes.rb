@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  
+
 
   resources :chats, only: [:new, :create, :show] do
     resources :messages, only: [:new, :create]
@@ -19,4 +19,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  #
+  resources :exercises, controller: 'exercises' do
+    member do
+      patch :add_to_routine
+    end
+  end
 end
