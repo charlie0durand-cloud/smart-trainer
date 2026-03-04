@@ -14,7 +14,8 @@
         <div class="d-flex justify-content-start mb-3 bg-light rounded-4 text-dark align-items-center" style="max-width: 80%">
           <div class="px-4 pb-4 pt-4 d-flex">
             <% string = message.content %>
-            <% hash = eval(string) %>
+            <% hash = eval(string) %>*
+            <% exercice = @chat.exercices.find_by!(name: hash[:name]) %>
               <div class="d-flex">
                 <div>
                   <iframe
@@ -39,7 +40,7 @@
                       <ul class="dropdown-menu">
                         <% current_user.routines.each do |routine| %>
                           <li>
-                            <%= link_to routine.name, add_to_routine_exercise_path(message, routine_id: routine.id),
+                            <%= link_to routine.name, add_to_routine_exercise_path(exercice, routine_id: routine.id),
                                 method: :patch,
                                 data: { turbo_method: :patch },
                                 class: "dropdown-item" %>
