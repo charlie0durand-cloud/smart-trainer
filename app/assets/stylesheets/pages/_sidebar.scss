@@ -85,26 +85,6 @@
     }
   }
 }
-.cards {
-  display: flex;
-  gap: 1.5rem;
-  padding: 1.5rem;
-
-  .video {
-    width: 50%;
-    aspect-ratio: 16/9;
-    background: #e5e7eb;
-    border-radius: 12px;
-  }
-
-  .desc-exo {
-    width: 50%;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 1rem;
-  }
-}
 
 .sidebar-menu-item {
   display: flex;
