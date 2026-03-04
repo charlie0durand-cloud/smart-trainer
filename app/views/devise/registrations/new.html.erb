@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row background-blue">
 <div class="mt-4 col-4 offset-4">
 <h2 class="devise-title">Sign up</h2>
 
@@ -9,7 +9,7 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

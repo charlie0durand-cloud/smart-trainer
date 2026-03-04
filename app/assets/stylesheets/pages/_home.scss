@@ -1,16 +1,22 @@
-body {
+/* Ce code ne s'appliquera QUE sur la home page */
+.background-blue {
   margin: 0;
   padding: 0;
-  /* Dégradé vertical : du bleu foncé au bleu plus clair */
   background: linear-gradient(
     to bottom,
-    #66A5AA 0%,    /* Couleur du haut */
-    #48515A 100%   /* Couleur du bas */
+    #66A5AA 0%,
+    #48515A 100%
   );
-  background-attachment: fixed; /* Le dégradé ne bouge pas quand on scrolle */
+  background-attachment: fixed;
   min-height: 100vh;
   color: white;
   font-family: 'Inter', sans-serif;
+}
+
+/* On s'assure que les autres pages gardent un fond neutre */
+body {
+  background: #ffffff;
+  color: #333;
 }
 
 .hero {
@@ -79,8 +85,10 @@ body {
 }
 
 .sharktrainer-container {
-  width: 400px;
+  width: 600px;
   height: 800px;          /* Garde les proportions */
   justify-content: center;
   display: flex;
 }
+
+
