@@ -1,8 +1,6 @@
 class RoutinesController < ApplicationController
   before_action :set_routines, only: %i[show]
 
-  layout "home", only: [:show]
-
   def index
     @routines = current_user.routines
   end
