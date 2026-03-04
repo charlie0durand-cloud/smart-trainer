@@ -7,10 +7,15 @@
         <iframe width="100%" height="100%" src="<%= exercice.video_url %>" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="desc-exo">
+        <p><strong>Nom :</strong> <%= exercice.name %></p>
         <p><%= exercice.description %></p>
         <p><strong>Répétitions :</strong> <%= exercice.rep_amount %></p>
         <p><strong>Objectif :</strong> <%= exercice.objective %></p>
       </div>
     <% end %>
   <% end %>
+</div>
+
+<div class="back-button">
+  <%= link_to "Retour", chat_path(Chat.last), class: "btn-back" %>
 </div>
