@@ -2,7 +2,7 @@
 
   <div class="sidebar-inner">
 
-    <div class="sidebar-footer">
+    <div>
       <%= link_to new_routine_path, class: "btn-new-routine" do %>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -12,11 +12,11 @@
       <% end %>
     </div>
 
-    <nav class="sidebar-content">
-      <ul class="sidebar-menu">
+    <nav>
+      <ul>
         <% @routines.each do |routine| %>
-          <li class="sidebar-menu-item">
-            <%= link_to routine.name, routine_path(routine), class: "sidebar-menu-button" %>
+          <li class="sidebar-menu-item card-index-routine">
+            <%= link_to routine.name, routine_path(routine) %>
             <%= button_to routine_path(routine), method: :delete, class: "sidebar-delete", data: { turbo_confirm: "Supprimer cette routine ?" } do %>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
