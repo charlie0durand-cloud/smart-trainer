@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_02_141055) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_03_172947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,7 +29,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_02_141055) do
     t.string "name"
     t.string "objective"
     t.string "rep_amount"
-    t.bigint "routine_id", null: false
+    t.bigint "routine_id"
     t.datetime "updated_at", null: false
     t.string "video_url"
     t.index ["chat_id"], name: "index_exercices_on_chat_id"
