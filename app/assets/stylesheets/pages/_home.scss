@@ -1,1 +1,86 @@
-// Specific CSS for your home-page
+body {
+  margin: 0;
+  padding: 0;
+  /* Dégradé vertical : du bleu foncé au bleu plus clair */
+  background: linear-gradient(
+    to bottom,
+    #66A5AA 0%,    /* Couleur du haut */
+    #48515A 100%   /* Couleur du bas */
+  );
+  background-attachment: fixed; /* Le dégradé ne bouge pas quand on scrolle */
+  min-height: 100vh;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* Important ! */
+}
+
+.hero-flex-wrapper {
+  display: flex;
+  align-items: center;    /* Aligne le logo au milieu de la hauteur du texte */
+  justify-content: space-between; /* Pousse le texte à gauche et le logo à droite */
+  gap: 50px;              /* Un peu plus d'espace pour un logo plus grand */
+  max-width: 1600px;      /* Légèrement plus large pour accommoder un grand logo */
+  width: 100%;            /* Prend toute la largeur disponible du container */
+  padding: 20px;
+}
+
+.hero-text-content {
+  flex: 20;                /* Le texte prend l'espace disponible */
+  display: flex;
+  flex-direction: column; /* Garde le titre et le bouton empilés */
+  align-items: flex-start; /* Aligne le bouton à gauche sous le texte */
+  text-align: left;       /* Texte aligné à gauche */
+}
+
+.hero-text-content h1 {
+  margin-bottom: 25px;
+  font-size: 3rem;        /* Titre un peu plus grand pour équilibrer */
+  line-height: 1.2;
+  font-size: 2rem;
+}
+
+.hero-logo-container {
+  flex: 0 0 auto;         /* Ne s'étire pas, garde sa taille définie */
+  display: flex;
+  justify-content: center;
+}
+
+.hero-logo-large {
+  width: 800px;
+  height: auto;           /* Garde les proportions */
+}
+
+.btn-custom-primary {
+  display: inline-block;
+  padding: 15px 35px;
+  background-color: #a3d133; /* Le vert "Shark" de ton image */
+  color: #0b132b;            /* Texte foncé pour une lisibilité maximale */
+  text-decoration: none;
+  border-radius: 50px;       /* Bords très arrondis comme sur l'image */
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(163, 209, 51, 0.3); /* Effet de lueur */
+}
+
+.btn-custom-primary:hover {
+  background-color: #b8e642; /* Version plus claire au survol */
+  transform: translateY(-3px); /* Petit saut vers le haut */
+  box-shadow: 0 6px 20px rgba(163, 209, 51, 0.5);
+}
+
+.sharktrainer-container {
+  width: 400px;
+  height: 800px;          /* Garde les proportions */
+  justify-content: center;
+  display: flex;
+}
