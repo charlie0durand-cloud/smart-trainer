@@ -127,3 +127,34 @@
     }
   }
 }
+
+.card-index-routine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0.6rem 1rem;
+  background: orangered;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.btn-new-routine:hover {
+  border-color: #999;
+  color: #000;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;      // ← supprime le padding par défaut du navigateur (~40px)
+  margin: 0;       // ← supprime la margin par défaut
+  width: 100%;
+}
