@@ -1,25 +1,72 @@
-<ul class="nav" data-toggle-target="hideable">
-  <%= link_to new_routine_path, class: "btn-new-routine nav-item" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14"/><path d="M12 5v14"/>
-    </svg>
-    <span class="sidebar-text">New routine</span>
-  <% end %>
-  <% @routines.each do |routine| %>
-    <li class="nav-item card-index-routine">
-        <div>
-          <%= link_to routine.name, routine_path(routine) %>
-        </div>
+<div class="nav" data-toggle-target="hideable">
+
+  <%# TOP : logo + icônes %>
+  <div class="sidebar-top">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
+    <div class="icons px-2">
+      <%= render "shared/sidebar_icons" %>
+    </div>
+  </div>
+
+  <%# MIDDLE : NEW CHAT %>
+  <div class="sidebar-chat">
+    <%= link_to chats_path, data: {turbo_method: :post}, class: "btn-new-routine nav-item" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-divnecap="round" stroke-divnejoin="round">
+        <path d="M5 12h14"/><path d="M12 5v14"/>
+      </svg>
+      <span class="sidebar-text">New chat</span>
+    <% end %>
+  </div>
+
+  <%# MIDDLE : routines %>
+  <div class="sidebar-middle">
+    <%= link_to new_routine_path, class: "btn-new-routine nav-item" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-divnecap="round" stroke-divnejoin="round">
+        <path d="M5 12h14"/><path d="M12 5v14"/>
+      </svg>
+      <span class="sidebar-text">New routine</span>
+    <% end %>
+
+    <% @routines.each do |routine| %>
+      <div class="nav-item card-index-routine">
+        <%= link_to routine_path(routine), class: "card-link-overlay" do %>
+          <span class="routine-name"><%= routine.name.capitalize %></span>
+        <% end %>
         <div class="sidebar-text">
-          <%= link_to routine_path(routine), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" } do %>
+          <%= link_to routine_path(routine),
+                data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" },
+                style: "position: relative; z-index: 3;" do %>
             <i class="fa-solid fa-trash"></i>
           <% end %>
         </div>
-    </li>
-  <% end %>
+      </div>
+    <% end %>
+    </div>
 
-  <div class="icons mt-2 px-4">
-    <%= render "shared/sidebar_icons" %>
+  <%# BOTTOM : user %>
+  <div class="sidebar-bottom">
+    <% if user_signed_in? %>
+      <div class="nav-item dropdown">
+        <a href="#" class="avatar d-flex adivgn-items-center gap-2" id="navbarDropdown"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag "avatar-christophe.png", class: "avatar-img", alt: "menu" %>
+          <p class="mb-0 sidebar-text">Christophe</p>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <%= link_to "Action", "#", class: "dropdown-item" %>
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </div>
+    <% end %>
   </div>
-</ul>
+
+</div>

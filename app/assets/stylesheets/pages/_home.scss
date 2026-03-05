@@ -19,7 +19,7 @@ background-color: #EDEDED;
   /* Fixe le fond pour éviter qu'il ne se répète ou bouge au scroll */
   background-attachment: fixed;
   /* Force le fond à couvrir toute la hauteur de l'écran */
-  height: calc(100vh - 56px);
+  height: calc(100vh);
   /* Définit la police et la couleur par défaut pour tout le site */
   color: white;
   font-family: 'Inter', sans-serif;
@@ -32,7 +32,7 @@ background-color: #EDEDED;
   gap: 50px;              /* Un peu plus d'espace pour un logo plus grand */
   max-width: 1600px;      /* Légèrement plus large pour accommoder un grand logo */
   width: 100%;            /* Prend toute la largeur disponible du container */
-  padding: 20px;
+  // padding: 20px;
 }
 
 .hero-text-content {
@@ -40,7 +40,8 @@ background-color: #EDEDED;
   display: flex;
   flex-direction: column; /* Garde le titre et le bouton empilés */
   align-items: flex-start; /* Aligne le bouton à gauche sous le texte */
-  text-align: right;       /* Texte aligné à gauche */
+  text-align: right;
+  margin-top: -90px; /* Texte aligné à gauche */
 }
 
 .hero-text-content h1 {

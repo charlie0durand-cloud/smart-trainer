@@ -5,27 +5,23 @@
 
 .sidebar-nav {
   position: fixed;
-  top: 56px;
+  top: 0px;
   width: 20%;
-  height: calc(100vh - 56px);
+  height: 100vh;
   z-index: 100;
   transition: width 0.3s ease, flex 0.3s ease;
   background-color: white;
   padding: 16px;
+  box-sizing: border-box; // ← CRUCIAL : le padding ne déborde plus
+  display: flex;          // ← rend la nav flex container
+  flex-direction: column; // ← pour que .nav (enfant) prenne toute la hauteur
+  overflow: hidden;
 }
 
 .content-marge{
   margin-left: 20%;
 }
 
-
-.icons {
-  position: absolute;
-  bottom: 2px;
-  right: 5px;
-  color: black;
-  text-decoration: none;
-}
 
 .btn-new-routine {
   display: flex;
@@ -41,7 +37,9 @@
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 600;
-  & :hover {
+  box-sizing: border-box; // ← idem
+  max-width: 100%;
+  &:hover {
     border-color: #999;
     color: #000;
   }
@@ -55,18 +53,28 @@
   width: 100%;
   margin-top: 10px;
   padding: 0.6rem 1rem;
-  background: orangered;
+  background: #FF4401;
   border-radius: 8px;
-  text-decoration: none;
   font-size: 0.875rem;
+  color: white;
   font-weight: 600;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px rgba(132, 0, 0, 0.2);
+  text-shadow: 0 2px 2px rgba(0,0,0,0.1);
   a {
      text-decoration: none;
      color: white;
   }
+  & :hover {
+    background: #e03c00;
+  }
 }
 
 .nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
  list-style: none;
  padding: 0;// ← supprime le padding par défaut du navigateur (~40px)
  margin: 0; // ← supprime la margin par défaut
@@ -75,11 +83,114 @@
 
 .floating-toggle {
   position: fixed;
-  bottom: 20px;
+  top: 20px;
   left: 20px;
   z-index: 1000;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 146, 180);
+}
+
+.card-link-overlay span {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.routine-name {
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+
+.sidebar-text {
+  position: relative;
+  z-index: 2;
+}
+
+.card-index-routine p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.navbar-brand img {
+  height: 36px;
+  padding-left: 10px;
+}
+
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-height: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+
+.sidebar-chat {
+  flex: 1;
+  min-height: 0;
+  padding: 8px 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.sidebar-middle {
+  flex: 1.6;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.sidebar-bottom {
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+
+  li { list-style: none; }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #111;
+    padding: 6px 4px;
+    border-radius: 8px;
+
+    &:hover { background: #f5f5f5; }
+  }
+
+  .avatar-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  color: linear-gradient(135deg, #0092B4, #06958C);
 }
