@@ -1,17 +1,20 @@
 
+ <div class="hero">
   <div class="container">
     <div class="hero-flex-wrapper">
+
       <div class="hero-text-content">
-        <h1>Stop following a program,<br> create your own in one click.<br></h1>
-        <%= link_to "REGISTER NOW", new_user_registration_path, class: "btn-custom-primary" %>
+        <h1>Stop following a program,<br> create your own in one click.</h1>
+      </div>
+
+      <div class="button-center-zone">
+        <%= link_to "Go to my dashbord", new_user_registration_path, class: "btn-custom-primary btn-reveal" %>
       </div>
 
       <div class="hero-logo-container">
         <%= image_tag("logo bien.png", class: "hero-logo-large") %>
       </div>
+
     </div>
   </div>
-
- <%# <div class="sharktrainer-container"> %>
-    <%# <%= image_tag ("SharkTrainer (5).png") %>
-  <%# </div> %>
+</div>
