@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :authenticate_user!
   before_action :set_routines
-  
+
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
 

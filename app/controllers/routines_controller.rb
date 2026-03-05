@@ -19,7 +19,7 @@ class RoutinesController < ApplicationController
     @routine = Routine.new(routine_params)
     @routine.user = current_user
     if @routine.save
-      redirect_to root_path
+      redirect_to chat_path(Chat.last)
     else
       @routines = current_user.routines
       render :new, status: :unprocessable_content
@@ -29,7 +29,7 @@ class RoutinesController < ApplicationController
   def destroy
     @routine = Routine.find(params[:id])
     @routine.destroy
-    redirect_to root_path
+    redirect_to chat_path(Chat.last)
   end
 
   private

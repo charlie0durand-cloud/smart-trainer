@@ -1,24 +1,28 @@
 body {
-  margin: 0;
-  padding: 0;
-  /* Dégradé vertical : du bleu foncé au bleu plus clair */
-  background: linear-gradient(
-    to bottom,
-    #66A5AA 0%,    /* Couleur du haut */
-    #48515A 100%   /* Couleur du bas */
-  );
-  background-attachment: fixed; /* Le dégradé ne bouge pas quand on scrolle */
-  min-height: 100vh;
-  color: white;
-  font-family: 'Inter', sans-serif;
+background-color: #EDEDED;
 }
 
 .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent; /* Important ! */
+  // height: 100vh;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // background: transparent; /* Important ! */
+    margin: 0;
+    padding: 0;
+  /* Dégradé vertical : du bleu-vert au gris-bleu */
+  background: linear-gradient(
+    to bottom,
+    #66A5AA 0%,
+    #48515A 100%
+  );
+  /* Fixe le fond pour éviter qu'il ne se répète ou bouge au scroll */
+  background-attachment: fixed;
+  /* Force le fond à couvrir toute la hauteur de l'écran */
+  height: calc(100vh - 56px);
+  /* Définit la police et la couleur par défaut pour tout le site */
+  color: white;
+  font-family: 'Inter', sans-serif;
 }
 
 .hero-flex-wrapper {
@@ -36,14 +40,14 @@ body {
   display: flex;
   flex-direction: column; /* Garde le titre et le bouton empilés */
   align-items: flex-start; /* Aligne le bouton à gauche sous le texte */
-  text-align: left;       /* Texte aligné à gauche */
+  text-align: right;       /* Texte aligné à gauche */
 }
 
 .hero-text-content h1 {
-  margin-bottom: 25px;
-  font-size: 3rem;        /* Titre un peu plus grand pour équilibrer */
+  margin-bottom: -15px;
+  font-size: 2rem;        /* Titre un peu plus grand pour équilibrer */
   line-height: 1.2;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .hero-logo-container {
@@ -55,12 +59,24 @@ body {
 .hero-logo-large {
   width: 800px;
   height: auto;           /* Garde les proportions */
+  position: relative;
+  /* NOM de l'animation */
+  animation-name: sharkSwimTurnAndStop;
+  /* DURÉE : plus c'est haut, plus c'est lent (7s au lieu de 4s) */
+  animation-duration: 5s;
+  /* DÉLAI : le temps d'attente avant le début (1.5s) */
+  animation-delay: 1.5s;
+  /* Garde la position finale */
+  animation-fill-mode: forwards;
+  /* Mouvement fluide */
+  animation-timing-function: ease-in-out;
+  filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.3));
 }
 
 .btn-custom-primary {
   display: inline-block;
   padding: 15px 35px;
-  background-color: #a3d133; /* Le vert "Shark" de ton image */
+  background-color: #DA3D20;
   color: #0b132b;            /* Texte foncé pour une lisibilité maximale */
   text-decoration: none;
   border-radius: 50px;       /* Bords très arrondis comme sur l'image */
@@ -69,18 +85,120 @@ body {
   text-transform: uppercase;
   transition: all 0.3s ease;
   border: none;
-  box-shadow: 0 4px 15px rgba(163, 209, 51, 0.3); /* Effet de lueur */
+  box-shadow: 0 4px 15px rgba(218, 61, 32, 0.5); /* Effet de lueur */
 }
 
 .btn-custom-primary:hover {
-  background-color: #b8e642; /* Version plus claire au survol */
-  transform: translateY(-3px); /* Petit saut vers le haut */
-  box-shadow: 0 6px 20px rgba(163, 209, 51, 0.5);
+  /* On force le orange d'origine */
+  background-color: #DA3D20;
+  /* On garde la couleur du texte */
+  color: #0b132b;
+  /* OPTIONNEL : On accentue un peu l'ombre pour simuler une pression ou un survol */
+  box-shadow: 0 6px 20px rgba(218, 61, 32, 0.5);
+  /* OPTIONNEL : Un très léger agrandissement sans changer la couleur */
+  transform: scale(1.05);
 }
 
 .sharktrainer-container {
-  width: 400px;
+  width: 600px;
   height: 800px;          /* Garde les proportions */
   justify-content: center;
   display: flex;
+}
+
+@keyframes sharkSwimTurnAndStop {
+  0% {
+    /* Départ à droite */
+    transform: translateX(0) rotateY(0deg);
+  }
+  80% {
+    /* Arrivée à gauche (le déplacement prend 80% du temps) */
+    transform: translateX(-550px) rotateY(0deg);
+  }
+  100% {
+    /* Se retourne sur place à la fin */
+    transform: translateX(-550px) rotateY(180deg);
+  }
+}
+
+@keyframes fadeOutText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    /* Le texte commence à disparaître quand le requin arrive au milieu */
+    opacity: 1;
+  }
+  80% {
+    /* Le texte est totalement invisible quand le requin s'arrête à gauche */
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-text-content h1 {
+  animation: fadeOutText 6s ease-out forwards;
+}
+
+@keyframes revealImage {
+  0%, 80% {
+    /* Reste invisible pendant que le requin nage */
+    opacity: 0;
+    transform: translateX(20px); /* Légère translation pour l'effet */
+  }
+  100% {
+    /* Apparaît complètement quand le requin se retourne */
+    opacity: 1;
+    transform: translateX(0);    /* Revient à sa place */
+  }
+}
+
+.btn-reveal {
+  opacity: 0;
+  display: inline-block;
+  padding: 15px 30px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #F8843F;
+  color: #1C2541;
+  border-radius: 50px;
+  /* Apparaît après la nage  */
+  animation: revealCenter 1s ease-out forwards;
+  animation-delay: 7.5s;
+}
+  .button-center-zone {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(+50%, -50%);
+  }
+
+/* Animation d'apparition au centre */
+@keyframes revealCenter {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Effet de zoom avant */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 4px 15px rgba(218, 61, 32, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    /* L'ombre s'étend et devient plus intense */
+    box-shadow: 0 0 25px rgba(218, 61, 32, 0.8);
+    transform: scale(1.03); /* Très léger grossissement pour l'effet "vivant" */
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(218, 61, 32, 0.4);
+    transform: scale(1);
+  }
 }
