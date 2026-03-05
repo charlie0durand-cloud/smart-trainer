@@ -10,7 +10,6 @@
     <li class="nav-item card-index-routine">
         <div>
           <%= link_to routine.name, routine_path(routine) %>
-          <span class="sidebar-text"><%= routine.name %></span>
         </div>
         <div class="sidebar-text">
           <%= link_to routine_path(routine), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" } do %>
