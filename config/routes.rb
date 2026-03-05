@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :exercises, controller: 'exercises' do
     member do
       patch :add_to_routine
+      patch :remove_from_routine
     end
   end
 end
