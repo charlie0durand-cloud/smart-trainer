@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-page="<%= "#{controller_name}##{action_name}" data-controller="modal"%>">
+  <body data-page="<%= "#{controller_name}##{action_name}" %> data-controller="modal">
     <% if controller_name == "pages" && action_name == "home" %>
       <% content_for :inline_styles do %>
         <style>
