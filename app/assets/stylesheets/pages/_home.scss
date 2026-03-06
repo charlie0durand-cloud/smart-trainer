@@ -19,7 +19,7 @@ background-color: #EDEDED;
   /* Fixe le fond pour éviter qu'il ne se répète ou bouge au scroll */
   background-attachment: fixed;
   /* Force le fond à couvrir toute la hauteur de l'écran */
-  height: calc(100vh - 60px);
+  height: 100vh;
   /* Définit la police et la couleur par défaut pour tout le site */
   color: white;
   font-family: 'Inter', sans-serif;
@@ -67,7 +67,7 @@ background-color: #EDEDED;
   /* DURÉE : plus c'est haut, plus c'est lent (7s au lieu de 4s) */
   animation-duration: 3s;
   /* DÉLAI : le temps d'attente avant le début (1.5s) */
-  animation-delay: 1s;
+  animation-delay: 0s;
   /* Garde la position finale */
   animation-fill-mode: forwards;
   /* Mouvement fluide */
@@ -170,7 +170,7 @@ background-color: #EDEDED;
   border-radius: 50px;
   /* Apparaît après la nage  */
   animation: revealCenter 1s ease-out forwards;
-  animation-delay: 2s;
+  animation-delay: 0.5s;
 }
   .button-center-zone {
     position: absolute;
