@@ -62,8 +62,7 @@ background-color: #EDEDED;
   width: 800px;
   height: auto;           /* Garde les proportions */
   position: relative;
-  margin-top: -90px;
-  /* NOM de l'animation */
+    /* NOM de l'animation */
   animation-name: sharkSwimTurnAndStop;
   /* DURÉE : plus c'est haut, plus c'est lent (7s au lieu de 4s) */
   animation-duration: 3s;
