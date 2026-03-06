@@ -12,19 +12,18 @@
   display: inline-block;
   padding: 15px 35px;
   background-color: #DA3D20;
-  color: #0b132b;            /* Texte foncé pour une lisibilité maximale */
+  color: white;            /* Texte foncé pour une lisibilité maximale */
   text-decoration: none;
   border-radius: 50px;       /* Bords très arrondis comme sur l'image */
   font-weight: bold;
   font-size: 1.1rem;
-  text-transform: uppercase;
   transition: all 0.3s ease;
   border: none;
   box-shadow: 0 4px 15px rgba(218, 61, 32, 0.5); /* Effet de lueur */
 
   &:hover {
   /* On garde la couleur du texte */
-  color: #0b132b;
+  color: white;
   /* OPTIONNEL : On accentue un peu l'ombre pour simuler une pression ou un survol */
   box-shadow: 0 6px 20px rgba(218, 61, 32, 0.5);
   /* OPTIONNEL : Un très léger agrandissement sans changer la couleur */
