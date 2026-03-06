@@ -11,7 +11,7 @@
   flex: 1;
   margin-left: var(--sidebar-width);
   transition: margin-left var(--transition);
-  min-width: 0; /* Ã©vite overflow sur flex */
+  min-width: 0;
 }
 
 /* Quand sidebar collapsed */
@@ -157,6 +157,7 @@
 }
 
 .cards {
+  position: relative;
   text-decoration: none;
   color: #111827;
   display: flex;
@@ -188,6 +189,28 @@
     justify-content: center;
     gap: 0.5rem;
   }
+
+  .btn-delete-card {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    padding: 0.25rem;
+    border-radius: 4px;
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+
+    &:hover {
+      color: #111827;
+      background: #fef2f2;
+    }
+  }
 }
 
 .sidebar-menu-item {
@@ -212,6 +235,21 @@
   }
 }
 
+.routine-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+}
+
 .back-button {
   display: flex;
   justify-content: center;
@@ -219,15 +257,44 @@
 
   .btn-back {
     padding: 0.6rem 2rem;
-    background: transparent;
-    color: #111827;
+    background: #F4401F;
+    color: white;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
 
     &:hover {
-      background: #F8843F;
+      background: #e6732e;
+    }
+  }
+}
+
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+
+  form {
+    margin: 0;
+    padding: 0;
+  }
+
+  .btn-delete {
+    padding: 0.6rem 2rem;
+    background: #F4401F;
+    color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+
+    &:hover {
+      background: #e6732e;
     }
   }
 }

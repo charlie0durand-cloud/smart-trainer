@@ -12,19 +12,17 @@
     <%= yield :head %>
     <%= yield :inline_styles %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-page="<%= "#{controller_name}##{action_name}" %>">
+  <body data-page="<%= "#{controller_name}##{action_name}" data-controller="modal"%>">
     <% if controller_name == "pages" && action_name == "home" %>
       <% content_for :inline_styles do %>
         <style>
@@ -35,12 +33,10 @@
     <% end %>
 
     <div class="parent" data-controller="toggle">
-
         <nav class="sidebar-nav" data-toggle-target="sidebar">
           <%= render "shared/sidebar", routines: @routines %>
         </nav>
 
-        <%# Floating Sidebar button, do not touch %>
         <%= button_to "#", class: "nav-link d-none floating-toggle", data: { action: "click->toggle#call click->toggle#toggle", toggle_target: "floatingBtn" } do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-sidebar-inset" viewBox="0 0 16 16">
             <path d="M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z"/>
@@ -48,12 +44,11 @@
           </svg>
         <% end %>
 
-
         <div class="content-marge" data-toggle-target="content">
           <%= render "shared/flashes" %>
           <%= yield %>
         </div>
     </div>
-
+    <%= render "shared/modal_routine" %>
   </body>
 </html>
