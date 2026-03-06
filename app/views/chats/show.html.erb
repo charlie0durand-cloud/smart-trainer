@@ -1,6 +1,5 @@
-<% has_messages = @chat.messages.any? %>
 
-<div class="container">
+<div class="container" id="container-chat-show">
   <div class="messages mt-4">
     <% @chat.messages.each do |message| %>
 
@@ -69,12 +68,16 @@
     <% end %> <%# closes messages.each %>
   </div> <%# closes id="messages" %>
 
-  <div id="new_message_container" class="<%= has_messages ? 'sticky-bottom' : 'centered-input' %>">
+  <% has_messages = @chat.messages.any? %>
+
+  <div id="new_message_container">
+  <div class="<%= has_messages ? '' : 'centered-input' %>">
     <%= simple_form_for [@chat, @message] do |f| %>
       <div class="d-flex <%= has_messages ? 'flex-row align-items-center gap-2' : 'flex-column align-items-center gap-3' %>">
         <%= f.input :content, label: false, required: true, placeholder: "What do you want to do?", input_html: { class: "rounded-pill" }, wrapper_html: { class: "mb-0 flex-grow-1 w-100" } %>
         <%= f.button :submit, 'Ask SharkTrainer', class: "btn-custom-secondary text-nowrap mb-3 rounded-pill" %>
       </div>
     <% end %>
+  </div>
   </div>
 </div>
