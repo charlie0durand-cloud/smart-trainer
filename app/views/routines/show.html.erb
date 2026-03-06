@@ -15,6 +15,7 @@
 </div>
 
 <% @exercices.each do |exercice| %>
+<% imagerand = ["christophe19.png", "miniature-2.png", "miniature-3.png", "christophe117.png"].sample %>
   <div class="cards">
     <%= button_to remove_from_routine_exercise_path(exercice), method: :patch, class: "btn-delete-card" do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -23,7 +24,7 @@
       </svg>
     <% end %>
     <div class="video">
-      <img src="https://res.cloudinary.com/dyvcwmkmq/image/upload/v1772804795/christophe_117_aynklq.png" alt="<%= exercice.name %>">
+    <%= image_tag imagerand, alt: exercice.name %>
     </div>
     <div class="exercise-info">
       <p><strong>🚀<%= exercice.name %></strong></p>
