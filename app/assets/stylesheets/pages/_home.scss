@@ -65,9 +65,9 @@ background-color: #EDEDED;
   /* NOM de l'animation */
   animation-name: sharkSwimTurnAndStop;
   /* DURÉE : plus c'est haut, plus c'est lent (7s au lieu de 4s) */
-  animation-duration: 4.5s;
+  animation-duration: 3s;
   /* DÉLAI : le temps d'attente avant le début (1.5s) */
-  animation-delay: 1.5s;
+  animation-delay: 1s;
   /* Garde la position finale */
   animation-fill-mode: forwards;
   /* Mouvement fluide */
@@ -94,7 +94,7 @@ background-color: #EDEDED;
 
 .btn-custom-primary:hover {
   /* On force le orange d'origine */
-  background-color: #DA3D20;
+  background-color: #FF4401;
   /* On garde la couleur du texte */
   color: white;
   /* OPTIONNEL : On accentue un peu l'ombre pour simuler une pression ou un survol */
@@ -170,7 +170,7 @@ background-color: #EDEDED;
   border-radius: 50px;
   /* Apparaît après la nage  */
   animation: revealCenter 1s ease-out forwards;
-  animation-delay: 5s;
+  animation-delay: 2s;
 }
   .button-center-zone {
     position: absolute;
