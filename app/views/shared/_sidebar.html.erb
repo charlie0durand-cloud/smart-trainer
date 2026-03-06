@@ -31,19 +31,21 @@
       <span class="sidebar-text">New routine</span>
     <% end %>
 
-    <% @routines.each do |routine| %>
-        <%= link_to routine_path(routine), class: "card-link-overlay" do %>
-          <div class="nav-item card-index-routine">
-              <span class="routine-name"><%= routine.name.capitalize %></span>
-            <div class="sidebar-text">
-              <%= link_to routine_path(routine),
-                    data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" },
-                    style: "position: relative; z-index: 3;" do %>
-                <i class="fa-solid fa-trash"></i>
-              <% end %>
+    <% if user_signed_in? %>
+      <% current_user.routines.each do |routine| %>
+          <%= link_to routine_path(routine), class: "card-link-overlay" do %>
+            <div class="nav-item card-index-routine">
+                <span class="routine-name"><%= routine.name.capitalize %></span>
+              <div class="sidebar-text">
+                <%= link_to routine_path(routine),
+                      data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" },
+                      style: "position: relative; z-index: 3;" do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+      <% end %>
     <% end %>
     </div>
 
