@@ -19,7 +19,7 @@ background-color: #EDEDED;
   /* Fixe le fond pour éviter qu'il ne se répète ou bouge au scroll */
   background-attachment: fixed;
   /* Force le fond à couvrir toute la hauteur de l'écran */
-  height: calc(100vh);
+  height: 100vh;
   /* Définit la police et la couleur par défaut pour tout le site */
   color: white;
   font-family: 'Inter', sans-serif;
