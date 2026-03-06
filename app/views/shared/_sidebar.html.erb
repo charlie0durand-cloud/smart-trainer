@@ -32,18 +32,18 @@
     <% end %>
 
     <% @routines.each do |routine| %>
-      <div class="nav-item card-index-routine">
         <%= link_to routine_path(routine), class: "card-link-overlay" do %>
-          <span class="routine-name"><%= routine.name.capitalize %></span>
+          <div class="nav-item card-index-routine">
+              <span class="routine-name"><%= routine.name.capitalize %></span>
+            <div class="sidebar-text">
+              <%= link_to routine_path(routine),
+                    data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" },
+                    style: "position: relative; z-index: 3;" do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-        <div class="sidebar-text">
-          <%= link_to routine_path(routine),
-                data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" },
-                style: "position: relative; z-index: 3;" do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-        </div>
-      </div>
     <% end %>
     </div>
 
