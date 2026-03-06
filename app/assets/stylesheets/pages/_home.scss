@@ -41,7 +41,8 @@ background-color: #EDEDED;
   display: flex;
   flex-direction: column; /* Garde le titre et le bouton empilés */
   align-items: flex-start; /* Aligne le bouton à gauche sous le texte */
-  text-align: right;       /* Texte aligné à gauche */
+  text-align: right;
+  margin-top: -90px; /* Texte aligné à gauche */
 }
 
 .hero-text-content h1 {
@@ -73,34 +74,6 @@ background-color: #EDEDED;
   /* Mouvement fluide */
   animation-timing-function: ease-in-out;
   filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.3));
-}
-
-.btn-custom-primary {
-  display: inline-block;
-  padding: 15px 35px;
-  background-color: #FF4401;
-  color: white;            /* Texte foncé pour une lisibilité maximale */
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  // text-shadow:  1px  0.5px 0 #000;
-  text-decoration: none;
-  border-radius: 50px;       /* Bords très arrondis comme sur l'image */
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  border: none;
-  box-shadow: 0 4px 15px rgba(218, 61, 32, 0.5); /* Effet de lueur */
-}
-
-.btn-custom-primary:hover {
-  /* On force le orange d'origine */
-  background-color: #FF4401;
-  /* On garde la couleur du texte */
-  color: white;
-  /* OPTIONNEL : On accentue un peu l'ombre pour simuler une pression ou un survol */
-  box-shadow: 0 6px 20px rgba(218, 61, 32, 0.5);
-  /* OPTIONNEL : Un très léger agrandissement sans changer la couleur */
-  transform: scale(1.05);
 }
 
 .sharktrainer-container {
