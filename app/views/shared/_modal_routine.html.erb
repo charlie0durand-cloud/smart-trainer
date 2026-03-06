@@ -1,0 +1,16 @@
+<div class="modal-overlay" id="modal-routine" data-controller="modal">
+  <div class="modal-container">
+    <h1>Your New routine</h1>
+
+    <%= form_with model: Routine.new, url: routines_path do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "What's your routine ?" %>
+        <%= f.text_field :name, placeholder: "Ex: Full Body Strength", required: true %>
+      </div>
+
+      <%= f.submit "Creat it buddy!" %>
+    <% end %>
+
+    <button class="modal-close" data-action="click->modal#close">✕</button>
+  </div>
+</div>

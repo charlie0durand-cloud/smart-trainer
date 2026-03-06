@@ -1,0 +1,80 @@
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.modal-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+
+    input {
+      padding: 0.6rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  input[type="submit"] {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 0.6rem 2rem;
+    background: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      background: #e03d00;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #6b7280;
+
+    &:hover {
+      color: #111827;
+    }
+  }
+}
