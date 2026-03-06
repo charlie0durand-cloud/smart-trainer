@@ -22,27 +22,17 @@
   margin-left: 20%;
 }
 
-
-.btn-new-routine {
+.grey-text {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 12px;
+  color: #bdbcbc;
+}
+
+.line {
   width: 100%;
-  padding: 0.6rem 1rem;
-  background: transparent;
-  color: #111827;
-  border: 2px dashed #d1d5db;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  box-sizing: border-box; // ← idem
-  max-width: 100%;
-  &:hover {
-    border-color: #999;
-    color: #000;
-  }
+  height: 1px;
+  background: #dedede;
 }
 
 .card-index-routine {
@@ -55,9 +45,8 @@
   padding: 0.6rem 1rem;
   background: #FF4401;
   border-radius: 8px;
-  font-size: 0.875rem;
+  // font-size: 0.875rem;
   color: white;
-  font-weight: 600;
   position: relative;
   box-sizing: border-box;
 
@@ -141,13 +130,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 8px;
+  padding-top: 4px;
 }
 
 .sidebar-chat {
   flex: 1;
   min-height: 0;
-  padding: 8px 0;
+  padding: 0px 0;
   width: 100%;
   margin-top: 20px;
 }
@@ -159,6 +148,7 @@
   min-height: 0;
   padding: 8px 0;
   width: 100%;
+  margin-top: -99px;
 }
 
 .sidebar-bottom {
@@ -191,4 +181,31 @@
   display: flex;
   align-items: center;
   color: linear-gradient(135deg, #0092B4, #06958C);
+}
+
+.new-button {
+  text-decoration: none;
+  color: rgb(54, 54, 54);
+  margin-top: 15px; // ← ajoutez cette ligne
+  display: block;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0.6rem 1rem;
+  // background: rgb(189, 188, 188);
+  background: #dbdbdbe2;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+
+  &:hover {
+    background: #56565616;
+    border: none;
+  }
 }

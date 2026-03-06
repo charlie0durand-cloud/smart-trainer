@@ -1,6 +1,6 @@
 <% has_messages = @chat.messages.any? %>
-
 <div class="container">
+
   <div class="messages mt-4">
     <% @chat.messages.each do |message| %>
 
@@ -12,7 +12,7 @@
           </div>
         </div>
 
-    <%# Print the response of the assistant if it is the exercises%>
+    <%# Print the response of the assistant if it is the exercises %>
       <% elsif message.role == "assistant" %>
         <% begin %>
           <% hash = JSON.parse(message.content) %>
@@ -69,6 +69,7 @@
     <% end %> <%# closes messages.each %>
   </div> <%# closes id="messages" %>
 
+  <div>
   <div id="new_message_container" class="<%= has_messages ? 'sticky-bottom' : 'centered-input' %>">
     <%= simple_form_for [@chat, @message] do |f| %>
       <div class="d-flex <%= has_messages ? 'flex-row align-items-center gap-2' : 'flex-column align-items-center gap-3' %>">
@@ -76,5 +77,6 @@
         <%= f.button :submit, 'Ask SharkTrainer', class: "btn-custom-secondary text-nowrap mb-3 rounded-pill" %>
       </div>
     <% end %>
+  </div>
   </div>
 </div>

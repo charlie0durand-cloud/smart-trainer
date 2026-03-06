@@ -12,25 +12,18 @@
 
   <%# MIDDLE : NEW CHAT %>
   <div class="sidebar-chat">
-    <%= link_to chats_path, data: {turbo_method: :post}, class: "btn-new-routine nav-item" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-divnecap="round" stroke-divnejoin="round">
-        <path d="M5 12h14"/><path d="M12 5v14"/>
-      </svg>
-      <span class="sidebar-text">New chat</span>
+    <%= link_to chats_path, data: {turbo_method: :post}, class: "new-button nav-item" do %>
+      <span class="sidebar-text"><i class="fa-regular fa-pen-to-square"></i> New chat</span>
     <% end %>
   </div>
 
   <%# MIDDLE : routines %>
   <div class="sidebar-middle">
-    <button class="btn-new-routine nav-item" data-action="click->modal#open" data-modal-target="overlay">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-divnecap="round" stroke-divnejoin="round">
-        <path d="M5 12h14"/><path d="M12 5v14"/>
-      </svg>
-      <span class="sidebar-text">New routine</span>
-    </button>
-
+    <div class="grey-text">
+    <div class="line"></div>
+    <span>Routines</span>
+    <div class="line"></div>
+  </div>
     <% if user_signed_in? %>
       <% current_user.routines.each do |routine| %>
           <%= link_to routine_path(routine), class: "card-link-overlay" do %>
@@ -47,6 +40,10 @@
           <% end %>
       <% end %>
     <% end %>
+
+    <button class="new-button nav-item" data-action="click->modal#open" data-modal-target="overlay">
+      <span class="sidebar-text"><i class="fa-solid fa-plus"></i> New routine</span>
+    </button>
     </div>
 
   <%# BOTTOM : user %>
@@ -55,8 +52,8 @@
       <div class="nav-item dropdown">
         <a href="#" class="avatar d-flex adivgn-items-center gap-2" id="navbarDropdown"
            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag "avatar-christophe.png", class: "avatar-img", alt: "menu" %>
-          <p class="mb-0 sidebar-text">Christophe</p>
+          <%= image_tag "avatar-romain.jpg", class: "avatar-img", alt: "menu" %>
+          <p class="mb-0 sidebar-text">Romain</p>
         </a>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <%= link_to "Action", "#", class: "dropdown-item" %>
