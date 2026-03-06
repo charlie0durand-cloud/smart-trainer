@@ -169,18 +169,18 @@
   background: white;
 
   .video {
-    width: 50%;
-    aspect-ratio: 16/9;
-    background: #e5e7eb;
-    border-radius: 8px;
-    overflow: hidden;
+  width: 50%;
+  aspect-ratio: 16/9;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
+}
 
   .exercise-info {
     flex: 1;
@@ -238,34 +238,35 @@
 .routine-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1.5rem;
   position: relative;
+  font-family: inherit;
 
-  h1 {
+   h1 {
     position: absolute;
-    left: 50%;
+    left: 45%;
     transform: translateX(-50%);
     margin: 0;
+    font-family: inherit;
+    font-weight: 700;
+    text-transform: capitalize;
   }
 }
 
 .back-button {
   display: flex;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  padding: 0;
 
   .btn-back {
     padding: 0.6rem 2rem;
-    background: #F4401F;
-    color: white;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+    color: black;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
 
     &:hover {
-      background: #e6732e;
+      color: #F4401F;
     }
   }
 }
@@ -273,28 +274,16 @@
 .delete-button {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0 1.5rem;
-
-  form {
-    margin: 0;
-    padding: 0;
-  }
+  padding: 0;
 
   .btn-delete {
     padding: 0.6rem 2rem;
-    background: #F4401F;
-    color: white;
-    border: 1px solid #d1d5db;
-    border-radius: 50px;
+    color: black;
     text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
+    font-weight: 700;
 
     &:hover {
-      background: #e6732e;
+      color: #F4401F;
     }
   }
 }
