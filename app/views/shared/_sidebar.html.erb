@@ -7,17 +7,19 @@
     <span class="sidebar-text">New routine</span>
   </button>
 
-  <% @routines.each do |routine| %>
-    <li class="nav-item card-index-routine">
-      <div>
-        <%= link_to routine.name, routine_path(routine) %>
-      </div>
-      <div class="sidebar-text">
-        <%= link_to routine_path(routine), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" } do %>
-          <i class="fa-solid fa-trash"></i>
-        <% end %>
-      </div>
-    </li>
+  <% if user_signed_in? %>
+    <% current_user.routines.each do |routine| %>
+      <li class="nav-item card-index-routine">
+        <div>
+          <%= link_to routine.name, routine_path(routine) %>
+        </div>
+        <div class="sidebar-text">
+          <%= link_to routine_path(routine), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette routine ?" } do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
   <% end %>
 
   <div class="icons mt-2 px-4">
