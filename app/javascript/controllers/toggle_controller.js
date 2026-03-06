@@ -5,10 +5,22 @@ export default class extends Controller {
   static targets = ["icon", "hideable", "content", "sidebar", "floatingBtn"]
 
   connect() {
-    console.log(this.iconTargets)
-    console.log(this.hideableTarget)}
+    const isHomePage = document.body.dataset.page === "pages#home"
+    if (isHomePage) {
+      this.closeSidebar()
+    }
+  }
 
-    call(event) {
+  closeSidebar() {
+    this.sidebarTarget.classList.add("d-none")
+    this.contentTarget.classList.remove("content-marge")
+    // Ne pas montrer le floatingBtn sur la home page
+    if (document.body.dataset.page !== "pages#home") {
+      this.floatingBtnTarget.classList.remove("d-none")
+    }
+  }
+
+  call(event) {
     event.preventDefault()
 
     this.hideableTarget.classList.toggle("d-none")
@@ -19,10 +31,10 @@ export default class extends Controller {
   }
 
   closeSidebarOnHome() {
-  if (document.body.dataset.page === "root") {
-    this.closeSidebar()
+    if (document.body.dataset.page === "root") {
+      this.closeSidebar()
+    }
   }
-}
 
    toggle() {
     const sidebar = this.sidebarTarget

@@ -19,10 +19,11 @@ background-color: #EDEDED;
   /* Fixe le fond pour éviter qu'il ne se répète ou bouge au scroll */
   background-attachment: fixed;
   /* Force le fond à couvrir toute la hauteur de l'écran */
-  height: calc(100vh - 56px);
+  height: 100vh;
   /* Définit la police et la couleur par défaut pour tout le site */
   color: white;
   font-family: 'Inter', sans-serif;
+  overflow: hidden;
 }
 
 .hero-flex-wrapper {
@@ -32,7 +33,7 @@ background-color: #EDEDED;
   gap: 50px;              /* Un peu plus d'espace pour un logo plus grand */
   max-width: 1600px;      /* Légèrement plus large pour accommoder un grand logo */
   width: 100%;            /* Prend toute la largeur disponible du container */
-  padding: 20px;
+  // padding: 20px;
 }
 
 .hero-text-content {
@@ -40,7 +41,8 @@ background-color: #EDEDED;
   display: flex;
   flex-direction: column; /* Garde le titre et le bouton empilés */
   align-items: flex-start; /* Aligne le bouton à gauche sous le texte */
-  text-align: right;       /* Texte aligné à gauche */
+  text-align: right;
+  margin-top: -90px; /* Texte aligné à gauche */
 }
 
 .hero-text-content h1 {
@@ -60,43 +62,18 @@ background-color: #EDEDED;
   width: 800px;
   height: auto;           /* Garde les proportions */
   position: relative;
+  margin-top: -90px;
   /* NOM de l'animation */
   animation-name: sharkSwimTurnAndStop;
   /* DURÉE : plus c'est haut, plus c'est lent (7s au lieu de 4s) */
-  animation-duration: 5s;
+  animation-duration: 3s;
   /* DÉLAI : le temps d'attente avant le début (1.5s) */
-  animation-delay: 1.5s;
+  animation-delay: 0s;
   /* Garde la position finale */
   animation-fill-mode: forwards;
   /* Mouvement fluide */
   animation-timing-function: ease-in-out;
   filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.3));
-}
-
-.btn-custom-primary {
-  display: inline-block;
-  padding: 15px 35px;
-  background-color: #DA3D20;
-  color: #0b132b;            /* Texte foncé pour une lisibilité maximale */
-  text-decoration: none;
-  border-radius: 50px;       /* Bords très arrondis comme sur l'image */
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  border: none;
-  box-shadow: 0 4px 15px rgba(218, 61, 32, 0.5); /* Effet de lueur */
-}
-
-.btn-custom-primary:hover {
-  /* On force le orange d'origine */
-  background-color: #DA3D20;
-  /* On garde la couleur du texte */
-  color: #0b132b;
-  /* OPTIONNEL : On accentue un peu l'ombre pour simuler une pression ou un survol */
-  box-shadow: 0 6px 20px rgba(218, 61, 32, 0.5);
-  /* OPTIONNEL : Un très léger agrandissement sans changer la couleur */
-  transform: scale(1.05);
 }
 
 .sharktrainer-container {
@@ -161,12 +138,12 @@ background-color: #EDEDED;
   padding: 15px 30px;
   font-weight: bold;
   text-decoration: none;
-  background-color: #F8843F;
-  color: #1C2541;
+  background-color: #FF4401;
+  color: white;
   border-radius: 50px;
   /* Apparaît après la nage  */
   animation: revealCenter 1s ease-out forwards;
-  animation-delay: 7.5s;
+  animation-delay: 0.5s;
 }
   .button-center-zone {
     position: absolute;

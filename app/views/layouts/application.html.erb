@@ -10,6 +10,7 @@
     <%= csp_meta_tag %>
 
     <%= yield :head %>
+    <%= yield :inline_styles %>
 
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
@@ -21,11 +22,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-page="home" data-controller="modal">
-    <header class="sticky-top">
-      <%= render "shared/navbar" %>
-    </header>
-    <%= render "shared/flashes" %>
+  <body data-page="<%= "#{controller_name}##{action_name}" data-controller="modal"%>">
+    <% if controller_name == "pages" && action_name == "home" %>
+      <% content_for :inline_styles do %>
+        <style>
+          .sidebar-nav { display: none !important; }
+          .content-marge { margin-left: 0 !important; }
+        </style>
+      <% end %>
+    <% end %>
 
     <div class="parent" data-controller="toggle">
         <nav class="sidebar-nav" data-toggle-target="sidebar">

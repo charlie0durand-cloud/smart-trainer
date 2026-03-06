@@ -76,7 +76,9 @@ class MessagesController < ApplicationController
     @message.role = "user"
 
     if @message.save
-      if gathering_phase?
+      if routine_request?
+        handle_routine_addition
+      elsif gathering_phase?
         handle_gathering
       else
         handle_generation
@@ -91,7 +93,8 @@ class MessagesController < ApplicationController
   private
 
   def gathering_phase?
-    @chat.messages.where(role: "assistant").none? do |m|
+    assistant_question_count = @chat.messages.where(role: "assistant").count
+    assistant_question_count < 3 || @chat.messages.where(role: "assistant").none? do |m|
       JSON.parse(m.content) rescue false
     end
   end
@@ -121,12 +124,6 @@ class MessagesController < ApplicationController
     if response_text.include?("READY_TO_GENERATE")
       clean_response = response_text.gsub("READY_TO_GENERATE", "").strip
       Message.create!(role: "assistant", content: clean_response, chat: @chat) unless clean_response.blank?
-      Message.create!(
-        role: "assistant",
-        content: "Great, I have everything I need! Here are the exercises I recommend for you:",
-        chat: @chat
-      )
-      handle_generation
     else
       Message.create!(role: "assistant", content: response_text, chat: @chat)
     end
@@ -171,5 +168,22 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content)
+  end
+
+  def routine_request?
+    exercises_generated = @chat.exercices.exists?
+    user_message = @message.content.downcase
+    exercises_generated && user_message.match?(/add|routine|save|put/)
+  end
+
+  def handle_routine_addition
+    tool = AddExercicesToRoutine.new(chat: @chat, user: current_user)
+
+    routine_names = current_user.routines.pluck(:name).join(", ")
+
+    response = RubyLLM.chat.with_instructions("You help users add exercises to their routines.
+    Available routines: #{routine_names}. Use the add_exercices_to_routine tool.").with_tool(tool).ask(@message.content)
+
+    Message.create!(role: "assistant", content: response.content, chat: @chat)
   end
 end
